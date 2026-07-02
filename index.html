@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veltrozan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar-wrapper">
+        <a href="#" class="logo">VELTROSANZSTORE</a>
+
+        <span class="menu-icono" id="menu-btn" style="color:white; cursor:pointer; font-size:1.3rem;">
+            ☰ Menú
+        </span>
+
+        <nav class="navbar" id="menu-nav" aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#zapatos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <div class="hero-logo">
+                <img src="images/imagenes/logo.jpg.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ZAPATOS ===== -->
+    <section class="shoes" id="zapatos">
+        <div class="shoes-container container">
+            <span class="section-label">Colección</span>
+            <h2>Los diferentes estilos de zapatos</h2>
+            <p>Cada par cuenta una historia. Explora nuestros estilos diseñados para quienes aprecian la distinción.</p>
+
+            <!-- SLIDER -->
+            <div class="shoes-slider" id="shoes-slider">
+                <div class="slider-track">
+
+                    <!-- SLIDE 1 -->
+                    <article class="shoes-card slide-activa">
+                        <div class="card-img-wrapper">
+                            <img class="card-img" src="images/imagenes/zapatilla7.png" alt="Zapatilla New Balance">
+                        </div>
+                        <h3>Zapatilla New Balance</h3>
+                        <p>Rendimiento y diseño en perfecta armonía para cada aventura.</p>
+                    </article>
+
+                    <!-- SLIDE 2 -->
+                    <article class="shoes-card">
+                        <div class="card-img-wrapper">
+                            <img class="card-img" src="images/imagenes/zapatilla8.png" alt="Zapatilla Nike">
+                        </div>
+                        <h3>Zapatilla Nike</h3>
+                        <p>Rendimiento y diseño en perfecta armonía para cada aventura.</p>
+                    </article>
+
+                    <!-- SLIDE 3 -->
+                    <article class="shoes-card">
+                        <div class="card-img-wrapper">
+                            <img class="card-img" src="images/imagenes/zapatilla9.png" alt="Zapatilla Nike Elite">
+                        </div>
+                        <h3>Zapatilla Nike Elite</h3>
+                        <p>Rendimiento y diseño en perfecta armonía para cada aventura.</p>
+                    </article>
+
+                </div>
+
+                <!-- DOTS -->
+                <div class="slider-dots" id="slider-dots">
+                    <span class="slider-dot activa" data-index="0"></span>
+                    <span class="slider-dot" data-index="1"></span>
+                    <span class="slider-dot" data-index="2"></span>
+                </div>
+            </div>
+
+            <a href="#coleccion" class="btn-1">VER TODOS LOS PRODUCTOS</a>
+        </div>
+    </section>
+
+    <!-- ===== NUESTRA COLECCIÓN ===== -->
+    <section class="collection" id="coleccion">
+        <div class="container">
+            <span class="section-label">Nuestra Colección</span>
+            <h2>Explora todas nuestras categorías</h2>
+            <p class="collection-text">
+                Muy pronto encontrarás promociones, combos, y mucho más.
+            </p>
+            <div class="collection-grid">
+
+                <!-- CALZADO -->
+                <a href="calzado.html" class="collection-card">
+                    <img src="images/imagenes/zapatilla7.png" alt="Calzado">
+                    <div class="collection-overlay">
+                        <h3>Calzado</h3>
+                        <p>Sandalias · Tenis · Casual</p>
+                        <span>Ver catálogo →</span>
+                    </div>
+                </a>
+
+                <!-- RELOJES -->
+                <a href="relojes.html" class="collection-card">
+                    <img src="images/imagenes relojes/reloj1.svg.jpg" alt="Relojes">
+                    <div class="collection-overlay">
+                        <h3>Relojes</h3>
+                        <p>Elegancia para cada ocasión</p>
+                        <span>Ver catálogo →</span>
+                    </div>
+                </a>
+
+                <!-- LOCIONES -->
+                <a href="lociones.html" class="collection-card">
+                    <img src="images/imagenes lociones/loción1.svg.jpg" alt="Lociones">
+                    <div class="collection-overlay">
+                        <h3>Lociones</h3>
+                        <p>Fragancias exclusivas</p>
+                        <span>Ver catálogo →</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contacto">
+        <span class="footer-logo">Veltrozans</span>
+        <div class="footer-visitas">
+            👁 <span id="visit-count">0</span> personas han visitado esta tienda
+        </div>
+        <p>&copy; 2026 Veltrozanz. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- ===== BOTÓN FLOTANTE WHATSAPP ===== -->
+    <a href="https://wa.me/573145932554" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.121 1.526 5.853L0 24l6.335-1.502A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 01-5.006-1.369l-.359-.214-3.727.884.934-3.614-.235-.372A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
