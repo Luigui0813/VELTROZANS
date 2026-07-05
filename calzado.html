@@ -2,169 +2,124 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Calzado | Veltrozans</title>
-
     <link rel="stylesheet" href="style.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
 
 <body>
-
-    <!-- HEADER -->
-
+    <!-- ===== NAVBAR ===== -->
     <header class="navbar-wrapper">
-
-        <a href="index.html" class="logo">
-            VELTROZANZSTORE
-        </a>
-
-        <span class="menu-icono" id="menu-btn">
-            ☰ Menú
-        </span>
-
-        <nav class="navbar" id="menu-nav">
-
+        <a href="index.html" class="logo">VELTROSANZSTORE</a>
+        <span class="menu-icono" id="menu-btn">☰ Menú</span>
+        <nav class="navbar" id="menu-nav" aria-label="Navegación principal">
             <ul>
-
                 <li><a href="index.html">Inicio</a></li>
-
                 <li><a href="calzado.html" class="active">Calzado</a></li>
-
                 <li><a href="relojes.html">Relojes</a></li>
-
                 <li><a href="lociones.html">Lociones</a></li>
-
-                <li><a href="contacto.html">Contacto</a></li>
-
+                <li><a href="https://wa.me/573118378752" target="_blank">Contacto</a></li>
             </ul>
-
         </nav>
-
     </header>
 
-    <!-- BANNER -->
-
+    <!-- ===== BANNER ===== -->
     <section class="category-banner">
-
         <div class="category-content">
-
             <span>VELTROZANS</span>
-
             <h1>COLECCIÓN DE CALZADO</h1>
-
-            <p>
-                Descubre zapatillas, sandalias y calzado premium para todos los estilos.
-            </p>
-
-            <a href="#catalogo" class="btn-banner">
-                Ver catálogo ↓
-            </a>
-
+            <p>Descubre zapatillas, sandalias y calzado premium para todos los estilos.</p>
+            <a href="#catalogo" class="btn-banner">Ver catálogo ↓</a>
         </div>
-
     </section>
 
-    <!-- CATÁLOGO -->
-
+    <!-- ===== CATÁLOGO ===== -->
     <section class="catalogo" id="catalogo">
+        <div class="catalogo-header">
+            <span class="section-label">Catálogo</span>
+            <h2>Todo el Calzado</h2>
+            <p>Selecciona el estilo que más te guste</p>
+        </div>
 
-        <div class="container">
+        <div class="buscar">
+            <input type="text" id="buscador" placeholder="🔍 Buscar calzado..." oninput="filtrarPorBusqueda()">
+        </div>
 
-            <div class="buscar">
+        <div class="filtros">
+            <button class="filtro-btn active" data-categoria="todos" onclick="filtrar(this,'todos')">Todos</button>
+            <button class="filtro-btn" data-categoria="tenis" onclick="filtrar(this,'tenis')">Tenis</button>
+            <button class="filtro-btn" data-categoria="casual" onclick="filtrar(this,'casual')">Casual</button>
+            <button class="filtro-btn" data-categoria="sandalia" onclick="filtrar(this,'sandalia')">Sandalias</button>
+        </div>
 
-                <input type="text" placeholder="Buscar producto...">
+        <!-- Las tarjetas se generan automáticamente desde script.js (ver productosCalzado) -->
+        <div class="productos-grid" id="productos-grid" data-tipo="calzado"></div>
+    </section>
 
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contacto">
+        <div class="footer-container container">
+
+            <div class="footer-section footer-trust">
+                <h5>Compra con confianza</h5>
+                <div class="footer-trust-items">
+                    <span class="trust-badge"><i class="trust-icon"></i>Compra segura</span>
+                    <span class="trust-badge"><i class="trust-icon"></i>Envíos a toda Colombia</span>
+                    <span class="trust-badge"><i class="trust-icon"></i>Garantía de calidad</span>
+                </div>
             </div>
 
-            <div class="productos-grid">
+            <div class="footer-divider"></div>
 
-                <article class="producto-card">
+            <div class="footer-section footer-payment">
+                <h5>Métodos de pago</h5>
+                <div class="footer-payment-items">
+                    <span class="payment-badge"><i class="payment-icon visa"></i>Visa</span>
+                    <span class="payment-badge"><i class="payment-icon mastercard"></i>MasterCard</span>
+                    <span class="payment-badge"><i class="payment-icon nequi"></i>Nequi</span>
+                    <span class="payment-badge"><i class="payment-icon daviplata"></i>Daviplata</span>
+                </div>
+            </div>
 
-                    <img src="images/zapatilla7.png" alt="Nike Air Max">
+            <div class="footer-divider"></div>
 
-                    <h3>Nike Air Max</h3>
-
-                    <p>$250.000</p>
-
-                    <span class="disponible">Disponible</span>
-
-                    <div class="producto-btns">
-
-                        <a href="producto.html">Ver detalles</a>
-
-                        <a href="https://wa.me/573145932554?text=Hola,%20quiero%20información%20del%20producto"
-                            target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            WhatsApp
-                        </a>
-
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <span class="footer-logo">Veltrozans</span>
+                    <div class="footer-visitas">
+                        👁 <span id="visit-count">0</span> personas han visitado esta tienda
                     </div>
-
-                </article>
-
-                <article class="producto-card">
-
-                    <img src="images/zapatilla7.png" alt="Nike Air Max">
-
-                    <h3>Adidas Runner</h3>
-
-                    <p>$230.000</p>
-
-                    <span class="disponible">Disponible</span>
-
-                    <div class="producto-btns">
-
-                        <a href="producto.html">Ver detalles</a>
-
-                        <a href="https://wa.me/573145932554?text=Hola,%20quiero%20información%20del%20producto"
-                            target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            WhatsApp
-                        </a>
-
+                </div>
+                <div class="footer-bottom-right">
+                    <p>&copy; 2026 Veltrozanz. Todos los derechos reservados.</p>
+                    <div class="footer-legal">
+                        <a href="politica-privacidad.html">Política de privacidad</a> <span class="footer-legal-sep">|</span> <a href="terminos-condiciones.html">Términos y condiciones</a>
                     </div>
-
-                </article>
-
-                <article class="producto-card">
-
-                    <img src="images/zapatilla7.png" alt="Nike Air Max">
-
-                    <h3>New Balance 574</h3>
-
-                    <p>$280.000</p>
-
-                    <span class="disponible">Disponible</span>
-
-                    <div class="producto-btns">
-
-                        <a href="producto.html">Ver detalles</a>
-
-                        <a href="https://wa.me/573145932554?text=Hola,%20quiero%20información%20del%20producto"
-                            target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            WhatsApp
-                        </a>
-
-                    </div>
-
-                </article>
-
+                </div>
             </div>
 
         </div>
+    </footer>
 
-    </section>
+    <!-- ===== BOTÓN VOLVER ARRIBA ===== -->
+    <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5" />
+            <path d="M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- ===== BOTÓN FLOTANTE WHATSAPP ===== -->
+    <a href="https://wa.me/573118378752?text=%C2%A1Hola%21%20Estoy%20interesado%20en%20sus%20productos%20%F0%9F%98%8A" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.121 1.526 5.853L0 24l6.335-1.502A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 01-5.006-1.369l-.359-.214-3.727.884.934-3.614-.235-.372A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+        </svg>
+    </a>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
