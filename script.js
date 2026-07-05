@@ -68,26 +68,38 @@ if (slides.length > 0) {
 
 // ===== CONTADOR DE VISITAS =====
 async function updateVisitCount() {
+    const counter = document.getElementById('visit-count');
+    if (!counter) return;
+
+    // Ya se contó esta visita en esta sesión del navegador,
+    // solo mostramos el número guardado sin volver a incrementar.
+    const yaContada = sessionStorage.getItem('veltrozan_visita_contada');
+
     try {
-        const response = await fetch('https://api.counterapi.dev/v1/veltrozanstore/visits/up');
+        const endpoint = yaContada
+            ? 'https://api.counterapi.dev/v1/veltrozanstore/visits/'      // solo consulta
+            : 'https://api.counterapi.dev/v1/veltrozanstore/visits/up';   // consulta + incrementa
+
+        const response = await fetch(endpoint);
         const data = await response.json();
-        const counter = document.getElementById('visit-count');
-        if (counter) {
-            const total = data.count + 1240;
-            let current = 0;
-            const increment = Math.ceil(total / 60);
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= total) {
-                    current = total;
-                    clearInterval(timer);
-                }
-                counter.textContent = current.toLocaleString();
-            }, 20);
+
+        if (!yaContada) {
+            sessionStorage.setItem('veltrozan_visita_contada', '1');
         }
+
+        const total = data.count + 1240;
+        let current = 0;
+        const increment = Math.ceil(total / 60);
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= total) {
+                current = total;
+                clearInterval(timer);
+            }
+            counter.textContent = current.toLocaleString();
+        }, 20);
     } catch (error) {
-        const counter = document.getElementById('visit-count');
-        if (counter) counter.textContent = '1,240';
+        counter.textContent = '1,240';
     }
 }
 
