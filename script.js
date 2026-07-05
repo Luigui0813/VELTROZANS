@@ -105,7 +105,22 @@ async function updateVisitCount() {
 
 updateVisitCount();
 
-// ===== TALLAS EN PÁGINA DE DETALLE =====
+// ===== BOTÓN VOLVER ARRIBA =====
+const backToTopBtn = document.getElementById('back-to-top');
+
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 const tallasDetalle = document.querySelectorAll('.producto-detalle .talla-btn');
 if (tallasDetalle.length > 0) {
     tallasDetalle.forEach(btn => {
