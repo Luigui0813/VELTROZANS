@@ -42,30 +42,30 @@ const DESCRIPCION_RELOJ = {
 // Los que no alcanzaron foto real usan números altos (90+, 110+) que no
 // existen en la carpeta, así que caen automáticamente en la imagen de respaldo.
 const productosCalzado = [
-    ['Nike Air Max', 250000, 'tenis', true, 1],
-    ['Adidas Runner', 230000, 'tenis', true, 2],
-    ['New Balance 574', 280000, 'tenis', true, 3],
-    ['Puma RS-X', 260000, 'tenis', true, 4],
-    ['Reebok Classic', 210000, 'tenis', true, 5],
-    ['Nike Revolution', 190000, 'tenis', true, 6],
-    ['Adidas Superstar', 240000, 'tenis', true, 7],
-    ['Converse Chuck Taylor', 175000, 'tenis', true, 8],
-    ['Vans Old Skool', 200000, 'tenis', true, 9],
-    ['Nike Air Force 1', 290000, 'tenis', true, 10],
-    ['Sandalia Cuero Tostado', 130000, 'sandalia', true, 12],
-    ['Sandalia Deportiva Negra', 110000, 'sandalia', true, 13],
-    ['Sandalia Plana Café', 95000, 'sandalia', true, 14],
-    ['Chancla Confort Gris', 80000, 'sandalia', true, 15],
-    ['Sandalia Negra Doble Hebilla', 220000, 'sandalia', true, 16],
+    ['New Balance 530', 250000, 'tenis', true, 1],
+    ['Nike Air Max Plus', 230000, 'tenis', true, 2],
+    ['Zapatilla Negra Estampado Dorado', 280000, 'tenis', true, 3],
+    ['Zapatilla Calvin Klein', 260000, 'tenis', true, 4],
+    ['New Balance 9060', 210000, 'tenis', true, 5],
+    ['Adidas Duramo', 190000, 'tenis', true, 6],
+    ['Adidas Response', 240000, 'tenis', true, 7],
+    ['Tenis Retro Azul y Blanco', 175000, 'tenis', true, 8],
+    ['Le Coq Sportif Runner', 200000, 'tenis', true, 9],
+    ['Puma Court Blanco', 290000, 'tenis', true, 10],
+    ['Sandalia Café Cuadros', 130000, 'sandalia', true, 12],
+    ['Sandalia Negra Cuadros', 110000, 'sandalia', true, 13],
+    ['Sandalia Beige Plataforma', 95000, 'sandalia', true, 14],
+    ['Sandalia Blanca Doble Correa', 80000, 'sandalia', true, 15],
+    ['Sandalia Negra Hebilla Dorada', 220000, 'sandalia', true, 16],
     ['Sandalia Blanca Acolchada', 195000, 'sandalia', true, 17],
-    ['Nike Air Zoom', 270000, 'tenis', true, 18],
-    ['Adidas Ultraboost', 310000, 'tenis', true, 19],
-    ['Puma Suede Classic', 195000, 'tenis', true, 20],
-    ['Reebok Nano', 245000, 'tenis', true, 21],
-    ['Nike Air Max 90', 275000, 'tenis', true, 22],
-    ['Tenis Casual Blanco', 185000, 'tenis', true, 23],
-    ['Zapatilla Urbana Gris', 220000, 'tenis', true, 24],
-    ['Zapato Náutico Beige', 180000, 'casual', true, 25]
+    ['Adidas Response Negro', 270000, 'tenis', true, 18],
+    ['Adidas Retro Runner', 310000, 'tenis', true, 19],
+    ['Nike Air Max 95', 195000, 'tenis', true, 20],
+    ['Adidas Samba', 245000, 'tenis', true, 21],
+    ['Tenis Blanco Minimalista', 275000, 'tenis', true, 22],
+    ['Reebok Club C', 185000, 'tenis', true, 23],
+    ['New Balance 574', 220000, 'tenis', true, 24],
+    ['Nike Air Force 1', 180000, 'casual', true, 25]
 ];
 
 const productosRelojes = [
@@ -76,17 +76,17 @@ const productosRelojes = [
     ['Reloj Clásico Hombre 05', 350000, 'hombre', true, 5],
     ['Reloj Clásico Hombre 06', 380000, 'hombre', true, 6],
     ['Reloj Clásico Hombre 07', 360000, 'hombre', true, 7],
-    ['Reloj Clásico Hombre 08', 300000, 'hombre', true, 8],
-    ['Reloj Clásico Hombre 09', 330000, 'hombre', true, 9],
-    ['Reloj Clásico Hombre 10', 250000, 'hombre', true, 10],
-    ['Reloj Elegante Mujer 01', 320000, 'mujer', true, 11],
+    ['Reloj Digital Naviforce Hombre 01', 300000, 'hombre', true, 8],
+    ['Reloj Digital Naviforce Hombre 02', 330000, 'hombre', true, 9],
+    ['Reloj Digital Naviforce Hombre 03', 250000, 'hombre', true, 10],
+    ['Reloj Digital Naviforce Mujer 01', 320000, 'mujer', true, 11],
     ['Reloj Elegante Mujer 02', 400000, 'mujer', true, 12],
     ['Reloj Elegante Mujer 03', 290000, 'mujer', true, 13],
-    ['Reloj Elegante Mujer 04', 220000, 'mujer', true, 14],
+    ['Reloj Digital Naviforce Mujer 02', 220000, 'mujer', true, 14],
     ['Reloj Elegante Mujer 05', 270000, 'mujer', true, 15],
-    ['Reloj Elegante Mujer 06', 350000, 'mujer', true, 16],
-    ['Reloj Elegante Mujer 07', 380000, 'mujer', true, 17],
-    ['Reloj Elegante Mujer 08', 340000, 'mujer', true, 18]
+    ['Reloj Digital Naviforce Mujer 03', 350000, 'mujer', true, 16],
+    ['Reloj Digital Naviforce Mujer 04', 380000, 'mujer', true, 17],
+    ['Reloj Digital Naviforce Mujer 05', 340000, 'mujer', true, 18]
 ];
 
 const productosLociones = [
@@ -301,67 +301,6 @@ if (slides.length > 0) {
         slider.addEventListener('mouseenter', () => clearInterval(sliderInterval));
         slider.addEventListener('mouseleave', () => {
             sliderInterval = setInterval(nextSlide, 4000);
-        });
-    }
-}
-
-// ===== CARRUSEL DE PROMOCIONES Y COMBOS =====
-const promoSlides = document.querySelectorAll('.promo-slide');
-const promoDots = document.querySelectorAll('.promo-dot');
-let promoActual = 0;
-let promoInterval;
-
-function irAPromo(index) {
-    promoSlides[promoActual].classList.remove('promo-activa');
-    promoDots[promoActual].classList.remove('activa');
-    promoActual = index;
-    promoSlides[promoActual].classList.add('promo-activa');
-    promoDots[promoActual].classList.add('activa');
-}
-
-function promoSiguiente() {
-    irAPromo((promoActual + 1) % promoSlides.length);
-}
-
-function promoAnterior() {
-    irAPromo((promoActual - 1 + promoSlides.length) % promoSlides.length);
-}
-
-if (promoSlides.length > 0) {
-    promoInterval = setInterval(promoSiguiente, 5000);
-
-    promoDots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            clearInterval(promoInterval);
-            irAPromo(i);
-            promoInterval = setInterval(promoSiguiente, 5000);
-        });
-    });
-
-    const promoPrevBtn = document.getElementById('promo-prev');
-    const promoNextBtn = document.getElementById('promo-next');
-
-    if (promoPrevBtn) {
-        promoPrevBtn.addEventListener('click', () => {
-            clearInterval(promoInterval);
-            promoAnterior();
-            promoInterval = setInterval(promoSiguiente, 5000);
-        });
-    }
-
-    if (promoNextBtn) {
-        promoNextBtn.addEventListener('click', () => {
-            clearInterval(promoInterval);
-            promoSiguiente();
-            promoInterval = setInterval(promoSiguiente, 5000);
-        });
-    }
-
-    const promoSlider = document.getElementById('promos-slider');
-    if (promoSlider) {
-        promoSlider.addEventListener('mouseenter', () => clearInterval(promoInterval));
-        promoSlider.addEventListener('mouseleave', () => {
-            promoInterval = setInterval(promoSiguiente, 5000);
         });
     }
 }
