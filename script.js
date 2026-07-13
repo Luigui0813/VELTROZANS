@@ -42,7 +42,7 @@ const DESCRIPCION_RELOJ = {
 // Los que no alcanzaron foto real usan números altos (90+, 110+) que no
 // existen en la carpeta, así que caen automáticamente en la imagen de respaldo.
 const productosCalzado = [
-    ['New Balance 530', 150000, 'tenis', true, 1],
+    ['New Balance 550', 150000, 'tenis', true, 1],
     ['Nike Air Max Plus', 330000, 'tenis', true, 2],
     ['Zapatilla Negra Estampado Dorado', 180000, 'tenis', true, 3],
     ['Zapatilla Calvin Klein', 160000, 'tenis', true, 4],
