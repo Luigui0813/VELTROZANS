@@ -5,7 +5,7 @@ const WHATSAPP_NUMBER = '573118378752'; // ← pon aquí el número correcto
 const IMAGEN_RESPALDO = {
     calzado: 'images/imagenes calzado/zapatilla11.png',
     relojes: 'images/imagenes relojes/reloj-01.jpg',
-    lociones: 'images/imagenes lociones/loción1.svg.jpg'
+    lociones: 'images/imagenes lociones/locion-16.jpg'
 };
 
 // ===== CARPETAS Y PREFIJOS DE IMÁGENES POR CATEGORÍA =====
@@ -33,14 +33,31 @@ const DESCRIPCION_RELOJ = {
 };
 
 // ===== DATOS DE PRODUCTOS =====
-// Formato: [nombre, precio, categoria, disponible, numeroDeImagen]
+// Formato: [nombre, precio, categoria, disponible, numeroDeImagen, (colores OPCIONAL)]
 // La imagen busca en <carpeta>/<prefijo>-XX.jpg — si no existe,
 // cae automáticamente en la imagen de respaldo de arriba.
+//
+// ── DISPONIBILIDAD ─────────────────────────────────────────────────────
+// El 4º dato controla si está disponible:
+//   true  -> badge verde "Disponible" + botón normal de WhatsApp
+//   false -> badge rojo "Agotado" + foto en gris + botón "Avísame cuando llegue"
+//
+// ── VARIANTES DE COLOR (opcional, solo calzado por ahora) ──────────────
+// Si un zapato viene en varios tonos, agrégale un SEXTO dato: una lista
+// de colores. Cada color es un objeto con { nombre, hex, img }:
+//
+//   ['New Balance 550', 150000, 'tenis', true, 1, [
+//       { nombre: 'Negro',  hex: '#1a1a1a', img: 'images/imagenes calzado/calzado-01-negro.jpg' },
+//       { nombre: 'Blanco', hex: '#f0f0f0', img: 'images/imagenes calzado/calzado-01-blanco.jpg' }
+//   ]],
+//
+// - nombre: se muestra en pantalla y en el mensaje de WhatsApp.
+// - hex:    color del círculo que se muestra (aprox. al tono real).
+// - img:    foto de ese color. El PRIMERO de la lista es el que se ve por defecto.
+// El zapato que NO tenga este sexto dato funciona igual que siempre.
 
 // numImg reasignado el 10-jul-2026 para que cada producto use una foto
 // que sí corresponde visualmente a su categoría real (tenis/casual/sandalia).
-// Los que no alcanzaron foto real usan números altos (90+, 110+) que no
-// existen en la carpeta, así que caen automáticamente en la imagen de respaldo.
 const productosCalzado = [
     ['New Balance 550', 150000, 'tenis', true, 1],
     ['Nike Air Max Plus', 330000, 'tenis', true, 2],
@@ -65,7 +82,40 @@ const productosCalzado = [
     ['Tenis Blanco Minimalista', 275000, 'tenis', true, 22],
     ['Reebok Club C', 185000, 'tenis', true, 23],
     ['New Balance 574', 120000, 'tenis', true, 24],
-    ['Nike Air Force 1', 140000, 'casual', true, 25]
+    ['Nike Air Force 1', 140000, 'casual', true, 25],
+
+    // ── PRODUCTOS NUEVOS (26–45). Ajusta precios a los reales. ──
+    ['Tenis Rojo Gamuza', 160000, 'tenis', true, 26],
+    ['Tenis Blanco Detalle Verde', 150000, 'tenis', true, 27],
+    ['Tenis Blanco Pastel', 155000, 'tenis', true, 28],
+    ['Tenis Blanco y Café', 150000, 'tenis', true, 29],
+
+    // Nº 30 viene en dos colores: Blanco (calzado-30) y Morado (calzado-30-morado)
+    ['Tenis Multicolor', 180000, 'tenis', true, 30, [
+        { nombre: 'Blanco', hex: '#e9e9e9', img: 'images/imagenes calzado/calzado-30.jpg' },
+        { nombre: 'Morado', hex: '#8b5cf6', img: 'images/imagenes calzado/calzado-30-morado.jpg' }
+    ]],
+
+    // (No existen fotos calzado-31 ni calzado-33, por eso esos números se saltan)
+
+    // Nº 32 viene en dos colores: Crema (calzado-32) y Negro (calzado-32-negro)
+    ['Tenis Retro', 150000, 'tenis', true, 32, [
+        { nombre: 'Crema', hex: '#efe9dc', img: 'images/imagenes calzado/calzado-32.jpg' },
+        { nombre: 'Negro', hex: '#1a1a1a', img: 'images/imagenes calzado/calzado-32-negro.jpg' }
+    ]],
+
+    ['Tenis Azul y Blanco', 160000, 'tenis', true, 34],
+    ['Tenis Blanco y Rosa', 145000, 'tenis', true, 35],
+    ['Tenis Negro Rayas Blancas', 150000, 'tenis', true, 36],
+    ['Tenis Negro Deportivo', 140000, 'tenis', true, 37],
+    ['Tenis Beige Urbano', 155000, 'tenis', true, 38],
+    ['Tenis Azul y Rosa', 170000, 'tenis', true, 39],
+    ['Tenis Crema Minimalista', 160000, 'tenis', true, 40],
+    ['Tenis Blanco y Negro', 150000, 'tenis', true, 41],
+    ['Tenis Gris Deportivo', 145000, 'tenis', true, 42],
+    ['Tenis Blanco y Morado', 155000, 'tenis', true, 43],
+    ['Tenis Blanco y Gris', 150000, 'tenis', true, 44],
+    ['Tenis Vinotinto y Blanco', 165000, 'tenis', true, 45]
 ];
 
 const productosRelojes = [
@@ -107,12 +157,40 @@ const productosLociones = [
     ['VICTORINOX CLASSIC RED', 200000, 'femenina', true, 15],
 ];
 
+// ===== MENSAJES DE WHATSAPP (según disponibilidad) =====
+// Disponible -> pregunta normal de compra.
+// Agotado    -> pide que le avisen cuando vuelva a llegar.
+function mensajeWhatsApp(nombre, disponible, color) {
+    let texto = disponible
+        ? `Hola 👋 Me interesa *${nombre}*`
+        : `Hola 👋 ¿Me puedes avisar cuando vuelva a estar disponible *${nombre}*?`;
+    if (color) texto += ` en color *${color}*`;
+    if (disponible) texto += ` ¿Está disponible?`;
+    return encodeURIComponent(texto);
+}
+
 // ===== RENDERIZADO DINÁMICO DE TARJETAS DE PRODUCTO =====
 function crearProductoCard(nombre, precio, categoria, disponible, numImg, tipo, idx) {
     const precioFormateado = '$' + precio.toLocaleString('es-CO');
     const imgPrincipal = `${CARPETA_IMG[tipo]}/${PREFIJO_IMG[tipo]}-${String(numImg).padStart(2, '0')}.jpg`;
     const imgRespaldo = IMAGEN_RESPALDO[tipo];
-    const mensaje = encodeURIComponent(`Hola 👋 Me interesa *${nombre}* ¿Está disponible?`);
+    const mensaje = mensajeWhatsApp(nombre, disponible);
+
+    // El botón "Ver detalles" NO se muestra en lociones.
+    // En calzado y relojes sí sigue apareciendo con normalidad.
+    const btnDetalles = tipo === 'lociones'
+        ? ''
+        : `<a href="producto.html?tipo=${tipo}&idx=${idx}">Ver detalles</a>`;
+
+    // Botón de WhatsApp: cambia el texto según disponibilidad.
+    // Disponible -> "WhatsApp" (verde). Agotado -> "Avísame cuando llegue" (gris).
+    const btnWhatsApp = disponible
+        ? `<a class="btn-wa-card" href="https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+           </a>`
+        : `<a class="btn-wa-card btn-aviso-card" href="https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}" target="_blank">
+                <i class="fa-regular fa-bell"></i> Avísame cuando llegue
+           </a>`;
 
     return `
         <article class="producto-card" data-categoria="${categoria}" data-nombre="${nombre.toLowerCase()}">
@@ -122,10 +200,8 @@ function crearProductoCard(nombre, precio, categoria, disponible, numImg, tipo, 
                 <span class="${disponible ? 'disponible' : 'agotado-badge'}">${disponible ? 'Disponible' : 'Agotado'}</span>
                 <p class="producto-precio-centrado">${precioFormateado}</p>
                 <div class="producto-btns">
-                    <a href="producto.html?tipo=${tipo}&idx=${idx}">Ver detalles</a>
-                    <a class="btn-wa-card" href="https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                    </a>
+                    ${btnDetalles}
+                    ${btnWhatsApp}
                 </div>
             </div>
         </article>`;
@@ -160,15 +236,36 @@ function renderizarProductoDetalle() {
     const datos = { calzado: productosCalzado, relojes: productosRelojes, lociones: productosLociones }[tipo];
     if (!datos || isNaN(idx) || !datos[idx]) return;
 
-    const [nombre, precio, categoria, disponible, numImg] = datos[idx];
+    // El sexto dato (colores) es OPCIONAL; si no existe, queda undefined.
+    const [nombre, precio, categoria, disponible, numImg, colores] = datos[idx];
     const precioFormateado = '$' + precio.toLocaleString('es-CO');
     const imgPrincipal = `${CARPETA_IMG[tipo]}/${PREFIJO_IMG[tipo]}-${String(numImg).padStart(2, '0')}.jpg`;
     const imgRespaldo = IMAGEN_RESPALDO[tipo];
-    const mensaje = encodeURIComponent(`Hola 👋 Me interesa *${nombre}* ¿Está disponible?`);
+
+    const tieneColores = Array.isArray(colores) && colores.length > 0;
 
     const imgEl = document.getElementById('producto-img');
+    const waBtn = document.getElementById('producto-whatsapp-btn');
+
+    // Color seleccionado actual (por defecto, el primero de la lista)
+    let colorSeleccionado = tieneColores ? colores[0].nombre : null;
+
+    // Reconstruye el enlace de WhatsApp según disponibilidad + color elegido
+    function actualizarWhatsApp() {
+        if (waBtn) {
+            waBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeWhatsApp(nombre, disponible, colorSeleccionado)}`;
+        }
+    }
+
+    // Si está agotado, cambia el texto y el estilo del botón de la página de detalle
+    if (waBtn && !disponible) {
+        waBtn.classList.add('btn-aviso');
+        waBtn.innerHTML = `<i class="fa-regular fa-bell"></i> Avísame cuando llegue`;
+    }
+
+    // Imagen principal: si hay colores, arranca con la foto del primer color
     if (imgEl) {
-        imgEl.src = imgPrincipal;
+        imgEl.src = tieneColores ? colores[0].img : imgPrincipal;
         imgEl.alt = nombre;
         imgEl.onerror = function () { this.onerror = null; this.src = imgRespaldo; };
     }
@@ -185,8 +282,47 @@ function renderizarProductoDetalle() {
         badgeEl.className = disponible ? 'disponible' : 'agotado-badge';
     }
 
-    const waBtn = document.getElementById('producto-whatsapp-btn');
-    if (waBtn) waBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}`;
+    // ── SELECTOR DE COLORES ──────────────────────────────────────────────
+    const coloresSection = document.getElementById('colores-section');
+    if (coloresSection) {
+        if (tieneColores) {
+            coloresSection.style.display = '';
+            coloresSection.innerHTML = `
+                <h3>Color: <span id="color-nombre">${colores[0].nombre}</span></h3>
+                <div class="colores-group">
+                    ${colores.map((c, i) => `
+                        <button class="color-btn ${i === 0 ? 'activa' : ''}"
+                                style="background:${c.hex};"
+                                data-img="${c.img}"
+                                data-nombre="${c.nombre}"
+                                title="${c.nombre}"
+                                aria-label="${c.nombre}"></button>
+                    `).join('')}
+                </div>
+            `;
+
+            const colorBtns = coloresSection.querySelectorAll('.color-btn');
+            colorBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    colorBtns.forEach(b => b.classList.remove('activa'));
+                    this.classList.add('activa');
+
+                    // Cambia la foto principal al tono elegido
+                    if (imgEl) imgEl.src = this.dataset.img;
+
+                    // Actualiza el nombre del color visible
+                    const nombreColorEl = document.getElementById('color-nombre');
+                    if (nombreColorEl) nombreColorEl.textContent = this.dataset.nombre;
+
+                    // Actualiza el mensaje de WhatsApp con el color elegido
+                    colorSeleccionado = this.dataset.nombre;
+                    actualizarWhatsApp();
+                });
+            });
+        } else {
+            coloresSection.style.display = 'none';
+        }
+    }
 
     // Descripción: si es reloj, usa el texto genérico de su categoría (hombre/mujer/deportivo)
     const descEl = document.getElementById('producto-descripcion');
@@ -199,6 +335,9 @@ function renderizarProductoDetalle() {
     if (tallasSection) {
         tallasSection.style.display = (tipo === 'calzado') ? '' : 'none';
     }
+
+    // Deja el enlace de WhatsApp listo (con color por defecto si aplica)
+    actualizarWhatsApp();
 
     document.title = `${nombre} | Veltrozans`;
 }
