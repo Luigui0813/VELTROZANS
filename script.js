@@ -139,7 +139,7 @@ const productosRelojes = [
 ];
 
 const productosLociones = [
-    ['Gabrielle Chanel', 120000, 'femenina', true, 1],
+    ['GABRIELLE CHANEL', 120000, 'femenina', true, 1],
     ['KIRKÈ', 240000, 'femenina', true, 2],
     ['CASSIOPEA', 250000, 'femenina', true, 3],
     ['TOMMY HILFIGER', 200000, 'masculina', true, 4],
