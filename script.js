@@ -59,7 +59,7 @@ const DESCRIPCION_RELOJ = {
 // numImg reasignado el 10-jul-2026 para que cada producto use una foto
 // que sí corresponde visualmente a su categoría real (tenis/casual/sandalia).
 const productosCalzado = [
-    ['New Balance 550', 150000, 'tenis', true, 1],
+    ['New Balance 550', 140000, 'tenis', true, 1],
     ['Nike Air Max Plus', 330000, 'tenis', true, 2],
     ['Zapatilla Negra Estampado Dorado', 180000, 'tenis', true, 3],
     ['Zapatilla Calvin Klein', 160000, 'tenis', true, 4],
@@ -83,12 +83,11 @@ const productosCalzado = [
     ['Reebok Club C', 185000, 'tenis', true, 23],
     ['New Balance 574', 120000, 'tenis', true, 24],
     ['Nike Air Force 1', 140000, 'casual', true, 25],
-
-    // ── PRODUCTOS NUEVOS (26–45). Ajusta precios a los reales. ──
     ['Tenis Rojo Gamuza', 160000, 'tenis', true, 26],
     ['Tenis Blanco Detalle Verde', 150000, 'tenis', true, 27],
     ['Tenis Blanco Pastel', 155000, 'tenis', true, 28],
-    ['Tenis Blanco y Café', 150000, 'tenis', true, 29],
+    ['Tenis Blanco y Café', 150000, 'tenis', true, 29], 
+  
 
     // Nº 30 viene en dos colores: Blanco (calzado-30) y Morado (calzado-30-morado)
     ['Tenis Multicolor', 180000, 'tenis', true, 30, [
