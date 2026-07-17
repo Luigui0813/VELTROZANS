@@ -219,7 +219,12 @@ img {
         HERO
 ===========================*/
 
-.header {
+/* FIX: el index usa <section class="hero">, pero antes el estilo del hero
+   estaba escrito para .header (que ningún HTML usa). Por eso al entrar la
+   portada se veía vacía. Se aplican ambos selectores para que funcione. */
+.header,
+.hero {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -227,10 +232,18 @@ img {
     align-items: flex-start;
     background:
         linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
-        url(images/imagenes/fondo.jpg);
+        url("images/imagenes/fondo.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: var(--color-accent); /* respaldo si la foto no carga */
+}
+
+/* Capa opcional encima del fondo del hero */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
 }
 
 /* FIX: antes .hero-content tenía min-height:100vh y justify-content:flex-start,

@@ -426,6 +426,42 @@ if (slides.length > 0) {
     }
 }
 
+// ===== CONTADOR DE VISITAS (local, sin API externa) =====
+// Se quitó la API api.counterapi.dev porque dejó de responder.
+// Ahora el conteo se guarda en el navegador con localStorage: parte de una
+// base y suma 1 por cada visita nueva (una sola vez por sesión).
+// NOTA: es un conteo por navegador, no global entre todos los visitantes.
+function updateVisitCount() {
+    const counter = document.getElementById('visit-count');
+    if (!counter) return;
+
+    const BASE = 1240; // número desde el que arranca el contador
+
+    let total = parseInt(localStorage.getItem('veltrozan_visitas'), 10);
+    if (isNaN(total)) total = BASE;
+
+    // Cuenta una sola vez por sesión del navegador
+    if (!sessionStorage.getItem('veltrozan_visita_contada')) {
+        total += 1;
+        localStorage.setItem('veltrozan_visitas', total);
+        sessionStorage.setItem('veltrozan_visita_contada', '1');
+    }
+
+    // Animación del número subiendo
+    let current = 0;
+    const increment = Math.ceil(total / 60);
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= total) {
+            current = total;
+            clearInterval(timer);
+        }
+        counter.textContent = current.toLocaleString();
+    }, 20);
+}
+
+updateVisitCount();
+
 // ===== BOTÓN VOLVER ARRIBA =====
 const backToTopBtn = document.getElementById('back-to-top');
 
