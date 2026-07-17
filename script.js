@@ -426,28 +426,16 @@ if (slides.length > 0) {
     }
 }
 
-// ===== CONTADOR DE VISITAS (local, sin API externa) =====
-// Se quitó la API api.counterapi.dev porque dejó de responder.
-// Ahora el conteo se guarda en el navegador con localStorage: parte de una
-// base y suma 1 por cada visita nueva (una sola vez por sesión).
-// NOTA: es un conteo por navegador, no global entre todos los visitantes.
-function updateVisitCount() {
-    const counter = document.getElementById('visit-count');
-    if (!counter) return;
+// ===== CONTADOR DE VISITAS (GLOBAL, con CountAPI) =====
+// Usa countapi.mileshilliard.com: el número se guarda en un servidor, así que
+// suma las visitas de TODOS los dispositivos (tu cel, tu amigo, tu tío...),
+// no solo las de tu propio navegador.
+//   - Primera visita de la sesión  -> /hit  (suma +1 al total global)
+//   - Recargar o navegar entre páginas en la misma sesión -> /get (solo consulta)
+const VISITAS_KEY = 'veltrozans_store_visitas_luigui0813'; // clave única: NO la cambies
+const VISITAS_BASE = 1240; // número decorativo desde el que arranca el contador
 
-    const BASE = 1240; // número desde el que arranca el contador
-
-    let total = parseInt(localStorage.getItem('veltrozan_visitas'), 10);
-    if (isNaN(total)) total = BASE;
-
-    // Cuenta una sola vez por sesión del navegador
-    if (!sessionStorage.getItem('veltrozan_visita_contada')) {
-        total += 1;
-        localStorage.setItem('veltrozan_visitas', total);
-        sessionStorage.setItem('veltrozan_visita_contada', '1');
-    }
-
-    // Animación del número subiendo
+function animarContador(el, total) {
     let current = 0;
     const increment = Math.ceil(total / 60);
     const timer = setInterval(() => {
@@ -456,8 +444,35 @@ function updateVisitCount() {
             current = total;
             clearInterval(timer);
         }
-        counter.textContent = current.toLocaleString();
+        el.textContent = current.toLocaleString();
     }, 20);
+}
+
+async function updateVisitCount() {
+    const counter = document.getElementById('visit-count');
+    if (!counter) return;
+
+    const yaContada = sessionStorage.getItem('veltrozan_visita_contada');
+    const accion = yaContada ? 'get' : 'hit'; // hit = suma; get = solo mira
+    const url = `https://countapi.mileshilliard.com/api/v1/${accion}/${VISITAS_KEY}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const globales = parseInt(data.value, 10) || 0;
+
+        if (!yaContada) {
+            sessionStorage.setItem('veltrozan_visita_contada', '1');
+        }
+
+        const total = VISITAS_BASE + globales;
+        localStorage.setItem('veltrozan_ultimo_total', total); // respaldo si la API falla
+        animarContador(counter, total);
+    } catch (error) {
+        // Si la API no responde en ese momento, muestra el último número alcanzado
+        const respaldo = parseInt(localStorage.getItem('veltrozan_ultimo_total'), 10) || VISITAS_BASE;
+        counter.textContent = respaldo.toLocaleString();
+    }
 }
 
 updateVisitCount();
