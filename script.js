@@ -147,7 +147,7 @@ const productosLociones = [
     ['DOLCE & GABBANA', 180000, 'femenina', true, 5],
     ['ORION', 280000, 'femenina', true, 6],
     ['ACQUA DI GIO', 130000, 'masculina', true, 7],
-    ['FAHRENHEIT-DIOR', 170000, 'femenina', true, 8],
+    ['FAHRENHEIT-DIOR', 165000, 'femenina', true, 8],
     ['LIGHT BLUE', 220000, 'femenina', true, 9],
     ['PARIS HILTON', 380000, 'masculina', true, 10],
     ['STARWALKER', 150000, 'masculina', true, 11],
