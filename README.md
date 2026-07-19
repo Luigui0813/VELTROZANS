@@ -1,4 +1,4 @@
-# VELTROSANZ™
+# VELTROSANZ
 
 Bienvenido al repositorio oficial de VELTROSANZ™.
 
