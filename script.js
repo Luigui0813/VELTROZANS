@@ -59,7 +59,7 @@ const DESCRIPCION_RELOJ = {
 // numImg reasignado el 10-jul-2026 para que cada producto use una foto
 // que sí corresponde visualmente a su categoría real (tenis/casual/sandalia).
 const productosCalzado = [
-    ['New Balance 550', 150000, 'tenis', true, 1],
+    ['New Balance 550', 130000, 'tenis', true, 1],
     ['Nike Air Max Plus', 330000, 'tenis', true, 2],
     ['Zapatilla Negra Estampado Dorado', 180000, 'tenis', true, 3],
     ['Zapatilla Calvin Klein', 160000, 'tenis', true, 4],
