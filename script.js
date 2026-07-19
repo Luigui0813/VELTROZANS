@@ -356,7 +356,7 @@ function renderizarProductoDetalle() {
     // Deja el enlace de WhatsApp listo (con color por defecto si aplica)
     actualizarWhatsApp();
 
-    document.title = `${nombre} | Veltrozans`;
+    document.title = `${nombre} | Veltrosanz`;
 }
 
 renderizarProductoDetalle();
@@ -432,7 +432,7 @@ if (slides.length > 0) {
 // no solo las de tu propio navegador.
 //   - Primera visita de la sesión  -> /hit  (suma +1 al total global)
 //   - Recargar o navegar entre páginas en la misma sesión -> /get (solo consulta)
-const VISITAS_KEY = 'veltrozans_store_visitas_luigui0813'; // clave única: NO la cambies
+const VISITAS_KEY = 'veltrosanz_store_visitas_fabiansanchez93'; // clave única: NO la cambies
 const VISITAS_BASE = 1240; // número decorativo desde el que arranca el contador
 
 function animarContador(el, total) {
@@ -452,7 +452,7 @@ async function updateVisitCount() {
     const counter = document.getElementById('visit-count');
     if (!counter) return;
 
-    const yaContada = sessionStorage.getItem('veltrozan_visita_contada');
+    const yaContada = sessionStorage.getItem('veltrosanz_visita_contada');
     const accion = yaContada ? 'get' : 'hit'; // hit = suma; get = solo mira
     const url = `https://countapi.mileshilliard.com/api/v1/${accion}/${VISITAS_KEY}`;
 
@@ -462,15 +462,15 @@ async function updateVisitCount() {
         const globales = parseInt(data.value, 10) || 0;
 
         if (!yaContada) {
-            sessionStorage.setItem('veltrozan_visita_contada', '1');
+            sessionStorage.setItem('veltrosanz_visita_contada', '1');
         }
 
         const total = VISITAS_BASE + globales;
-        localStorage.setItem('veltrozan_ultimo_total', total); // respaldo si la API falla
+        localStorage.setItem('veltrosanz_ultimo_total', total); // respaldo si la API falla
         animarContador(counter, total);
     } catch (error) {
         // Si la API no responde en ese momento, muestra el último número alcanzado
-        const respaldo = parseInt(localStorage.getItem('veltrozan_ultimo_total'), 10) || VISITAS_BASE;
+        const respaldo = parseInt(localStorage.getItem('veltrosanz_ultimo_total'), 10) || VISITAS_BASE;
         counter.textContent = respaldo.toLocaleString();
     }
 }
