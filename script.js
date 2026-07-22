@@ -556,3 +556,4 @@ function filtrarPorBusqueda() {
         card.style.display = (coincideCategoria && coincideBusqueda) ? 'block' : 'none';
     });
 }
+
