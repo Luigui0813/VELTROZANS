@@ -1146,6 +1146,11 @@ img {
     NUESTRA COLECCIÓN
 ==============================*/
 
+/*==============================
+    NUESTRA COLECCIÓN
+    Reemplaza el bloque con el mismo título en style.css
+==============================*/
+
 .collection {
     padding: 100px 5%;
     background: #f8f6f2;
@@ -1172,16 +1177,17 @@ img {
     margin-right: auto;
 }
 
+/* AQUÍ ESTÁ EL CAMBIO: antes repeat(3, 1fr), ahora repeat(2, 1fr) */
 .collection-grid {
     margin-top: 70px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
 .collection-card {
     position: relative;
-    height: 420px;
+    height: 380px;
     border-radius: 18px;
     overflow: hidden;
     text-decoration: none;

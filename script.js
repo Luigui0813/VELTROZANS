@@ -5,22 +5,26 @@ const WHATSAPP_NUMBER = '573118378752'; // ← pon aquí el número correcto
 const IMAGEN_RESPALDO = {
     calzado: 'images/imagenes calzado/zapatilla11.png',
     relojes: 'images/imagenes relojes/reloj-01.jpg',
-    lociones: 'images/imagenes lociones/locion-16.jpg'
+    lociones: 'images/imagenes lociones/locion-16.jpg',
+    correas: 'images/imagenes correas/correa-01.jpg'
 };
 
 // ===== CARPETAS Y PREFIJOS DE IMÁGENES POR CATEGORÍA =====
 // Aquí defines en qué carpeta está cada categoría y cómo empiezan sus archivos.
 // Ejemplo: relojes -> images/imagenes relojes/reloj-01.jpg
+//          correas -> images/imagenes correas/correa-01.jpg
 const CARPETA_IMG = {
     calzado: 'images/imagenes calzado',
     relojes: 'images/imagenes relojes',
-    lociones: 'images/imagenes lociones'
+    lociones: 'images/imagenes lociones',
+    correas: 'images/imagenes correas'
 };
 
 const PREFIJO_IMG = {
     calzado: 'calzado',
     relojes: 'reloj',
-    lociones: 'locion'
+    lociones: 'locion',
+    correas: 'correa'
 };
 
 // ===== DESCRIPCIONES GENÉRICAS DE RELOJES (por categoría) =====
@@ -30,6 +34,13 @@ const DESCRIPCION_RELOJ = {
     hombre: 'Reloj elegante para hombre, ideal para uso diario o formal.',
     mujer: 'Reloj femenino que combina estilo y elegancia para cualquier ocasión.',
     deportivo: 'Reloj resistente, perfecto para actividad física y uso diario.'
+};
+
+// ===== DESCRIPCIONES GENÉRICAS DE CORREAS (por categoría) =====
+const DESCRIPCION_CORREA = {
+    hombre: 'Correa en cuero para hombre, acabado resistente y hebilla metálica.',
+    mujer: 'Correa en cuero para mujer, diseño versátil para el día a día.',
+    deportivo: 'Correa resistente de uso deportivo, cómoda y de fácil ajuste.'
 };
 
 // ===== DATOS DE PRODUCTOS =====
@@ -83,13 +94,13 @@ const productosCalzado = [
     ['Reebok Club C', 150000, 'tenis', true, 23],
     ['New Balance 574', 160000, 'tenis', true, 24],
     ['Nike Air Force 1', 148000, 'casual', true, 25],
-    
+
 
     // ── PRODUCTOS NUEVOS (26–45). Ajusta precios a los reales. ──
     ['Tenis Rojo Gamuza', 160000, 'tenis', true, 26],
     ['Tenis Blanco Detalle Verde', 150000, 'tenis', true, 27],
     ['Tenis Blanco Pastel', 155000, 'tenis', true, 28],
-    ['Tenis Blanco y Café',150000, 'tenis', true, 29],
+    ['Tenis Blanco y Café', 150000, 'tenis', true, 29],
 
     // Nº 30 viene en dos colores: Blanco (calzado-30) y Morado (calzado-30-morado)
     ['Tenis Multicolor', 180000, 'tenis', true, 30, [
@@ -117,7 +128,7 @@ const productosCalzado = [
     ['Tenis Blanco y Morado', 155000, 'tenis', true, 43],
     ['Tenis Blanco y Gris', 150000, 'tenis', true, 44],
     ['Tenis Vinotinto y Blanco', 165000, 'tenis', true, 45]
-    
+
 ];
 
 const productosRelojes = [
@@ -140,25 +151,14 @@ const productosRelojes = [
     ['Reloj Digital Naviforce Mujer 04', 125000, 'mujer', true, 17],
     ['Reloj Digital Naviforce Mujer 05', 125000, 'mujer', true, 18]
 ];
-const productoscorreas = [
-    ['Reloj Clásico Hombre 01', 200000, 'hombre', true, 1],
-    ['Reloj Clásico Hombre 02', 180000, 'hombre', true, 2],
-    ['Reloj Clásico Hombre 03', 180000, 'hombre', true, 3],
-    ['Reloj Clásico Hombre 04', 180000, 'hombre', true, 4],
-    ['Reloj Clásico Hombre 05', 180000, 'hombre', true, 5],
-    ['Reloj Clásico Hombre 06', 180000, 'hombre', true, 6],
-    ['Reloj Clásico Hombre 07', 180000, 'hombre', true, 7],
-    ['Reloj Digital Naviforce Hombre 01', 125000, 'hombre', true, 8],
-    ['Reloj Digital Naviforce Hombre 02', 125000, 'hombre', true, 9],
-    ['Reloj Digital Naviforce Hombre 03', 125000, 'hombre', true, 10],
-    ['Reloj Digital Naviforce Mujer 01', 125000, 'mujer', true, 11],
-    ['Reloj Elegante Mujer 02', 125000, 'mujer', true, 12],
-    ['Reloj Elegante Mujer 03', 125000, 'mujer', true, 13],
-    ['Reloj Digital Naviforce Mujer 02', 125000, 'mujer', true, 14],
-    ['Reloj Elegante Mujer 05', 135000, 'mujer', true, 15],
-    ['Reloj Digital Naviforce Mujer 03', 125000, 'mujer', true, 16],
-    ['Reloj Digital Naviforce Mujer 04', 125000, 'mujer', true, 17],
-    ['Reloj Digital Naviforce Mujer 05', 125000, 'mujer', true, 18]
+
+// ===== CORREAS =====
+// Por ahora solo hay una foto: images/imagenes correas/correa-01.jpg
+// (renombra correa-hombre-01.jpg a correa-01.jpg).
+// Para agregar más: sube correa-02.jpg, correa-03.jpg... y añade una línea
+// aquí con ese número al final. Ajusta los precios a los reales.
+const productosCorreas = [
+    ['Correa de Cuero Hombre Café', 65000, 'hombre', true, 1],
 ];
 
 const productosLociones = [
@@ -178,6 +178,16 @@ const productosLociones = [
     ['VICTORINOX CLASSIC', 230000, 'masculina', true, 14],
     ['VICTORINOX CLASSIC RED', 200000, 'femenina', true, 15],
 ];
+
+// ===== MAPA CENTRAL DE CATEGORÍAS =====
+// Una sola fuente de verdad: si algún día agregas otra categoría (gorras,
+// billeteras...), la registras aquí y en CARPETA_IMG / PREFIJO_IMG y ya.
+const CATALOGOS = {
+    calzado: productosCalzado,
+    relojes: productosRelojes,
+    lociones: productosLociones,
+    correas: productosCorreas
+};
 
 // ===== MENSAJES DE WHATSAPP (según disponibilidad) =====
 // Disponible -> pregunta normal de compra.
@@ -200,7 +210,7 @@ function crearProductoCard(nombre, precio, categoria, disponible, numImg, tipo, 
     const mensaje = mensajeWhatsApp(nombre, disponible);
 
     // El botón "Ver detalles" NO se muestra en lociones.
-    // En calzado y relojes sí sigue apareciendo con normalidad.
+    // En calzado, relojes y correas sí sigue apareciendo con normalidad.
     const btnDetalles = tipo === 'lociones'
         ? ''
         : `<a href="producto.html?tipo=${tipo}&idx=${idx}">Ver detalles</a>`;
@@ -235,7 +245,7 @@ function renderizarCatalogo() {
     if (!grid) return;
 
     const tipo = grid.dataset.tipo;
-    const datos = { calzado: productosCalzado, relojes: productosRelojes, lociones: productosLociones }[tipo];
+    const datos = CATALOGOS[tipo];
     if (!datos) return;
 
     grid.innerHTML = datos
@@ -247,7 +257,7 @@ renderizarCatalogo();
 
 // ===== PÁGINA DE DETALLE DE PRODUCTO (producto.html) =====
 // Lee ?tipo=calzado&idx=3 de la URL y llena la página con los datos reales
-// del producto que el cliente clicó, sea calzado, reloj o loción.
+// del producto que el cliente clicó, sea calzado, reloj, loción o correa.
 function renderizarProductoDetalle() {
     const cont = document.getElementById('producto-detalle-dynamic');
     if (!cont) return;
@@ -256,7 +266,7 @@ function renderizarProductoDetalle() {
     const tipo = params.get('tipo') || 'calzado';
     const idx = parseInt(params.get('idx'), 10);
 
-    const datos = { calzado: productosCalzado, relojes: productosRelojes, lociones: productosLociones }[tipo];
+    const datos = CATALOGOS[tipo];
     if (!datos || isNaN(idx) || !datos[idx]) return;
 
     // El sexto dato (colores) es OPCIONAL; si no existe, queda undefined.
@@ -350,13 +360,16 @@ function renderizarProductoDetalle() {
         }
     }
 
-    // Descripción: si es reloj, usa el texto genérico de su categoría (hombre/mujer/deportivo)
+    // Descripción genérica según el tipo de producto
     const descEl = document.getElementById('producto-descripcion');
     if (descEl && tipo === 'relojes') {
         descEl.textContent = DESCRIPCION_RELOJ[categoria] || DESCRIPCION_RELOJ.hombre;
     }
+    if (descEl && tipo === 'correas') {
+        descEl.textContent = DESCRIPCION_CORREA[categoria] || DESCRIPCION_CORREA.hombre;
+    }
 
-    // Las tallas solo aplican a calzado; se ocultan para relojes y lociones
+    // Las tallas solo aplican a calzado; se ocultan para relojes, lociones y correas
     const tallasSection = document.getElementById('tallas-section');
     if (tallasSection) {
         tallasSection.style.display = (tipo === 'calzado') ? '' : 'none';
@@ -388,7 +401,7 @@ const menuBtn = document.getElementById("menu-btn");
 const menuNav = document.getElementById("menu-nav");
 
 if (menuBtn && menuNav) {
-    menuBtn.addEventListener("click", function(e) {
+    menuBtn.addEventListener("click", function (e) {
         e.stopPropagation();
         if (menuNav.style.right === "0px") {
             menuNav.style.right = "-100%";
@@ -403,7 +416,7 @@ if (menuBtn && menuNav) {
         });
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
         if (!menuNav.contains(e.target) && e.target !== menuBtn) {
             menuNav.style.right = "-100%";
         }
@@ -412,7 +425,7 @@ if (menuBtn && menuNav) {
 
 // ===== SLIDER DE ZAPATOS =====
 const slides = document.querySelectorAll('.shoes-slider .shoes-card');
-const dots   = document.querySelectorAll('.slider-dot');
+const dots = document.querySelectorAll('.slider-dot');
 let currentSlide = 0;
 let sliderInterval;
 
@@ -528,7 +541,7 @@ function filtrar(btn, categoria) {
 
     document.querySelectorAll('.producto-card').forEach(card => {
         const coincideCategoria = categoria === 'todos' || card.dataset.categoria === categoria;
-        const coincideBusqueda  = card.dataset.nombre?.toLowerCase().includes(busqueda);
+        const coincideBusqueda = card.dataset.nombre?.toLowerCase().includes(busqueda);
         card.style.display = (coincideCategoria && coincideBusqueda) ? 'block' : 'none';
     });
 }
@@ -539,7 +552,7 @@ function filtrarPorBusqueda() {
 
     document.querySelectorAll('.producto-card').forEach(card => {
         const coincideCategoria = categoriaActiva === 'todos' || card.dataset.categoria === categoriaActiva;
-        const coincideBusqueda  = card.dataset.nombre?.toLowerCase().includes(busqueda);
+        const coincideBusqueda = card.dataset.nombre?.toLowerCase().includes(busqueda);
         card.style.display = (coincideCategoria && coincideBusqueda) ? 'block' : 'none';
     });
 }
