@@ -83,6 +83,7 @@ const productosCalzado = [
     ['Reebok Club C', 150000, 'tenis', true, 23],
     ['New Balance 574', 160000, 'tenis', true, 24],
     ['Nike Air Force 1', 148000, 'casual', true, 25],
+    
 
     // ── PRODUCTOS NUEVOS (26–45). Ajusta precios a los reales. ──
     ['Tenis Rojo Gamuza', 160000, 'tenis', true, 26],
@@ -116,10 +117,31 @@ const productosCalzado = [
     ['Tenis Blanco y Morado', 155000, 'tenis', true, 43],
     ['Tenis Blanco y Gris', 150000, 'tenis', true, 44],
     ['Tenis Vinotinto y Blanco', 165000, 'tenis', true, 45]
+    
 ];
 
 const productosRelojes = [
     ['Reloj Clásico Hombre 01', 180000, 'hombre', true, 1],
+    ['Reloj Clásico Hombre 02', 180000, 'hombre', true, 2],
+    ['Reloj Clásico Hombre 03', 180000, 'hombre', true, 3],
+    ['Reloj Clásico Hombre 04', 180000, 'hombre', true, 4],
+    ['Reloj Clásico Hombre 05', 180000, 'hombre', true, 5],
+    ['Reloj Clásico Hombre 06', 180000, 'hombre', true, 6],
+    ['Reloj Clásico Hombre 07', 180000, 'hombre', true, 7],
+    ['Reloj Digital Naviforce Hombre 01', 125000, 'hombre', true, 8],
+    ['Reloj Digital Naviforce Hombre 02', 125000, 'hombre', true, 9],
+    ['Reloj Digital Naviforce Hombre 03', 125000, 'hombre', true, 10],
+    ['Reloj Digital Naviforce Mujer 01', 125000, 'mujer', true, 11],
+    ['Reloj Elegante Mujer 02', 125000, 'mujer', true, 12],
+    ['Reloj Elegante Mujer 03', 125000, 'mujer', true, 13],
+    ['Reloj Digital Naviforce Mujer 02', 125000, 'mujer', true, 14],
+    ['Reloj Elegante Mujer 05', 135000, 'mujer', true, 15],
+    ['Reloj Digital Naviforce Mujer 03', 125000, 'mujer', true, 16],
+    ['Reloj Digital Naviforce Mujer 04', 125000, 'mujer', true, 17],
+    ['Reloj Digital Naviforce Mujer 05', 125000, 'mujer', true, 18]
+];
+const productoscorreas = [
+    ['Reloj Clásico Hombre 01', 200000, 'hombre', true, 1],
     ['Reloj Clásico Hombre 02', 180000, 'hombre', true, 2],
     ['Reloj Clásico Hombre 03', 180000, 'hombre', true, 3],
     ['Reloj Clásico Hombre 04', 180000, 'hombre', true, 4],

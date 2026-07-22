@@ -1,111 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>VELTROSANZ™ | Tienda Oficial</title>
-
-    <meta name="description" content="VELTROSANZ™ | Tienda online de calzado, relojes y lociones premium. Envíos a toda Colombia.">
-
-    <meta name="keywords" content="VELTROSANZ, calzado, zapatillas, relojes, lociones, Colombia">
-
-    <meta name="author" content="VELTROSANZ">
-
-    <meta name="theme-color" content="#111111">
-
+    <title>Correas | Veltrosanz</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 <body>
-    <!-- ==== NAVBAR ===== -->
+
+    <!-- ===== NAVBAR ===== -->
     <header class="navbar-wrapper">
-        <a href="#" class="logo">
-            <span class="logo-title">VELTROSAN<span class="logo-accent">Z</span></span>
-            <span class="logo-tagline">Calzado · Relojes · Lociones</span>
-        </a>
-
-        <span class="menu-icono" id="menu-btn" style="cursor:pointer; font-size:1.3rem;">
-            ☰ Menú
-        </span>
-
+        <a href="index.html" class="logo">VELTROSANZSTORE</a>
+        <span class="menu-icono" id="menu-btn">☰ Menú</span>
         <nav class="navbar" id="menu-nav" aria-label="Navegación principal">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="#coleccion">Productos</a></li>
+                <li><a href="calzado.html">Calzado</a></li>
+                <li><a href="Correas.html" class="active">Correas</a></li>
+                <li><a href="lociones.html">Lociones</a></li>
                 <li><a href="https://wa.me/573118378752" target="_blank">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="inicio">
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-            <div class="hero-logo">
-                <img src="images/imagenes calzado/logo.png" alt="">
-            </div>
+    <!-- ===== BANNER ===== -->
+    <section class="category-banner" style="
+        background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url('images/imagenes Correas/reloj-01.jpg');
+        background-size: cover;
+        background-position: center;">
+        <div class="category-content">
+            <span>Veltrosanz · Correas</span>
+            <h1>Nuestra Colección</h1>
+            <p>Elegancia y calidad en cada detalle. Descubre la correa perfecta para complementar tu estilo.</p>
+            <a href="#catalogo-Correas" class="btn-banner">Ver correas</a>
         </div>
     </section>
 
-    <!-- ===== NUESTRA COLECCIÓN ===== -->
-    <section class="collection" id="coleccion">
-        <div class="container">
-            <span class="section-label">Nuestra Colección</span>
-            <h2>Explora todas nuestras categorías</h2>
-            <div class="collection-grid">
-
-                <!-- CALZADO -->
-                <a href="calzado.html" class="collection-card">
-                    <img src="images/imagenes calzado/calzado-01.jpg" alt="Calzado">
-                    <div class="collection-overlay">
-                        <h3>Calzado</h3>
-                        <p>Sandalias · Tenis · Casual</p>
-                        <span>Ver catálogo →</span>
-                    </div>
-                </a>
-
-                <!-- RELOJES -->
-                <a href="relojes.html" class="collection-card">
-                    <img src="images/imagenes relojes/reloj-01.jpg" alt="Relojes">
-                    <div class="collection-overlay">
-                        <h3>Relojes</h3>
-                        <p>Elegancia para cada ocasión</p>
-                        <span>Ver catálogo →</span>
-                    </div>
-                </a>
-
-                <!-- LOCIONES -->
-                <a href="lociones.html" class="collection-card">
-                    <img src="images/imagenes lociones/locion-16.jpg" alt="Lociones">
-                    <div class="collection-overlay">
-                        <h3>Lociones</h3>
-                        <p>Fragancias exclusivas</p>
-                        <span>Ver catálogo →</span>
-                    </div>
-                </a>
-
-                <!-- CORREAS -->
-                <a href="correas.html" class="collection-card">
-                    <img src="images/imagenes correas/correa-hombre-01.jpg" alt="Correas">
-                    <div class="collection-overlay">
-                        <h3>Correas</h3>
-                        <p>Elaboradas en cuero</p>
-                        <span>Ver catálogo →</span>
-                    </div>
-                </a>
-
-            </div>
+    <!-- ===== CATÁLOGO ===== -->
+    <section class="catalogo" id="catalogo-Correas">
+        <div class="catalogo-header">
+            <span class="section-label">Catálogo</span>
+            <h2>Todos las Correas</h2>
+            <p>Selecciona el estilo que más te gusta</p>
         </div>
+
+        <div class="buscar">
+            <input type="text" id="buscador" placeholder="🔍 Buscar correas..." oninput="filtrarPorBusqueda()">
+        </div>
+
+        <div class="filtros">
+            <button class="filtro-btn active" data-categoria="todos" onclick="filtrar(this,'todos')">Todos</button>
+            <button class="filtro-btn" data-categoria="hombre" onclick="filtrar(this,'hombre')">Hombre</button>
+            <button class="filtro-btn" data-categoria="mujer" onclick="filtrar(this,'mujer')">Mujer</button>
+            <button class="filtro-btn" data-categoria="deportivo" onclick="filtrar(this,'deportivo')">Deportivo</button>
+        </div>
+
+        <!-- Las tarjetas se generan automáticamente desde script.js (ver productoscorreas) -->
+        <div class="productos-grid" id="productos-grid" data-tipo="correas"></div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer" id="contacto">
         <div class="footer-container container">
 
-            <!-- COLUMNAS -->
-            <!-- COMPRA CON CONFIANZA -->
             <div class="footer-section footer-trust">
                 <h5>Compra con confianza</h5>
                 <div class="footer-trust-items">
@@ -117,7 +76,6 @@
 
             <div class="footer-divider"></div>
 
-            <!-- MÉTODOS DE PAGO -->
             <div class="footer-section footer-payment">
                 <h5>Métodos de pago</h5>
                 <div class="footer-payment-items">
@@ -130,10 +88,9 @@
 
             <div class="footer-divider"></div>
 
-            <!-- INFERIOR -->
             <div class="footer-bottom">
                 <div class="footer-bottom-left">
-                    <span class="footer-logo">Veltrozans</span>
+                    <span class="footer-logo">Veltrosanz</span>
                     <div class="footer-visitas">
                         👁 <span id="visit-count">0</span> personas han visitado esta tienda
                     </div>
@@ -157,7 +114,7 @@
         </svg>
     </button>
 
-    <!-- ===== BOTÓN FLOTANTE WHATSAPP ===== -->
+    <!-- BOTÓN FLOTANTE WA -->
     <a href="https://wa.me/573118378752?text=%C2%A1Hola%21%20Estoy%20interesado%20en%20sus%20productos%20%F0%9F%98%8A" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -167,5 +124,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
